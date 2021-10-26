@@ -1,0 +1,51 @@
+{
+	"name": "@sapling/gui",
+	"version": "0.1.0",
+	"license": "MPL-2.0",
+	"description": "GUI for developing Sapling apps",
+	"type": "module",
+	"keywords": [
+		"sapling",
+		"saplingjs",
+		"ui",
+		"gui",
+		"admin",
+		"panel"
+	],
+	"bin": {
+		"saplingui": "./index.js"
+	},
+	"homepage": "https://www.saplingjs.com",
+	"bugs": "https://github.com/saplingjs/gui/issues",
+	"author": {
+		"name": "Oskari Groenroos",
+		"email": "oskari@groenroos.fi",
+		"url": "https://www.groenroos.fi"
+	},
+	"dependencies": {
+		"@tinyhttp/app": "^2.0.11",
+		"open": "^8.4.0",
+		"sirv": "^1.0.18",
+		"vue": "^2.6.14",
+		"yargs": "^17.2.1"
+	},
+	"peerDependencies": {
+		"@sapling/sapling": "^0.1.0"
+	},
+	"devDependencies": {
+		"cross-env": "^7.0.3",
+		"laravel-mix": "^6.0.34",
+		"stylus": "^0.55.0",
+		"stylus-loader": "^6.2.0",
+		"vue-loader": "^15.9.8",
+		"vue-template-compiler": "^2.6.14"
+	},
+	"scripts": {
+		"dev": "npm run development",
+		"development": "mix",
+		"watch": "mix watch",
+		"hot": "mix watch --hot",
+		"prod": "npm run production",
+		"production": "mix --production"
+	}
+}
