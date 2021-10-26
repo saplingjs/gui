@@ -5,3 +5,4 @@ env
 coverage
 coverage.lcov
 .DS_Store
+mix-manifest.json
