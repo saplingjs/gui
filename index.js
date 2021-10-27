@@ -31,9 +31,14 @@ const app = new App();
 
 /* Static assets */
 
-app.use(`/js`, sirv(path.join(__dirname, 'dist/js'), { maxAge: 1 }));
-app.use(`/css`, sirv(path.join(__dirname, 'dist/css'), { maxAge: 1 }));
-app.use(`/images`, sirv(path.join(__dirname, 'src/images'), { maxAge: 1 }));
+const sirvSettings = {
+	maxAge: 1,
+	dev: process.env.NODE_ENV === 'development'
+};
+
+app.use(`/js`, sirv(path.join(__dirname, 'dist/js'), sirvSettings));
+app.use(`/css`, sirv(path.join(__dirname, 'dist/css'), sirvSettings));
+app.use(`/images`, sirv(path.join(__dirname, 'src/images'), sirvSettings));
 
 
 /* Data routes */

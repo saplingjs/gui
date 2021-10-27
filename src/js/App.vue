@@ -7,7 +7,7 @@
 						<h1><img src="/images/logo.svg" alt="Sapling" /></h1>
 					</div>
 					<div class="level-item">
-						<h2 v-text="config.name"></h2>
+						<h2 v-text="getConfigValue('name')"></h2>
 					</div>
 				</div>
 				<div class="level-right">
@@ -66,23 +66,22 @@
 <script>
 
 import axios from 'axios';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
 	name: 'App',
 
 	data() {
 		return {
-			config: {
-				name: "untitled",
-				port: 3000
-			},
 			running: false
 		};
 	},
 
 	computed: {
+		...mapGetters(['getConfigValue']),
+
 		url() {
-			return `http://localhost:${this.config.port}`;
+			return `http://localhost:${this.getConfigValue('port')}`;
 		}
 	},
 
@@ -90,8 +89,7 @@ export default {
 		/* Get config */
 		axios.get('/read/config')
 			.then((response) => {
-				this.config = response.data;
-
+				this.initConfig(response.data);
 				this.ping();
 			});
 	},
@@ -102,9 +100,11 @@ export default {
 	},
 
 	methods: {
+		...mapActions(['initConfig']),
+
 		ping() {
 			/* Check if it's running */
-			axios.get(`/utils/ping/${this.config.port}`)
+			axios.get(`/utils/ping/${this.getConfigValue('port')}`)
 				.then(() => {
 					this.running = true;
 				})
@@ -124,6 +124,9 @@ export default {
 	padding 0.75rem 1.5rem
 	margin-top 0
 	flex-direction column
+
+	& > .column
+		overflow hidden
 
 	header
 		img

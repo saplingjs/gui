@@ -4,15 +4,18 @@
 $family-primary = Inter,BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 $content-heading-weight = $weight-normal;
 $title-weight = $weight-normal;
+$label-weight = $weight-semibold;
 
 $primary = #50ce89;
 $link = $primary;
 $body-background-color = $white-ter;
 $menu-item-active-background-color = $primary;
 
+$section-padding = 2rem 0
 $box-padding = 2.5rem;
 $menu-item-radius = 8px;
 $menu-list-link-padding = 0.5em 2em 0.5em 0.75em
+$input-focus-box-shadow-size = 0 0 0 3px
 
 
 @import '~bulma-stylus/stylus/utilities/_all';
@@ -20,6 +23,7 @@ $menu-list-link-padding = 0.5em 2em 0.5em 0.75em
 @import '~bulma-stylus/stylus/layout/_all';
 @import '~bulma-stylus/stylus/helpers/_all';
 @import '~bulma-stylus/stylus/grid/_all';
+@import '~bulma-stylus/stylus/form/_all';
 
 @import '~bulma-stylus/stylus/elements/box';
 @import '~bulma-stylus/stylus/elements/container';
@@ -44,3 +48,47 @@ code
 	font-weight $weight-semibold
 	text-transform uppercase
 	letter-spacing 0.05em
+
+.field
+	margin 0 -0.75rem 0 -1rem !important
+	padding 0.75rem 0.75rem 0.75rem 1rem
+	border-radius 12px
+	transition 0.15s background linear
+
+	.field
+		margin 0 !important
+		padding 0
+		background none !important
+
+	&:hover
+		background $white-bis
+
+		.input
+			border-color $input-hover-border-color
+
+	&:active, &.is-active
+		background rgba($primary, 0.15)
+
+		.input
+			border-color $input-focus-border-color
+	
+	.input
+		transition 0.15s box-shadow linear, 0.15s border linear
+
+.field-label
+	flex-grow 2
+	text-align left
+	margin 0
+
+	label
+		padding-right 1.5rem
+		height 100%
+
+	h1, h2, h3, h4, h5, h6
+		font-size $size-6
+		font-weight $weight-medium
+	
+	p
+		font-size 0.675rem
+		font-weight $weight-normal
+		color $grey
