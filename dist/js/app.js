@@ -4913,7 +4913,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "assets" } }, [
-      _c("h1", { staticClass: "title is-2" }, [_vm._v("Assets")]),
+      _c("h1", { staticClass: "title is-3" }, [_vm._v("Assets")]),
       _vm._v(" "),
       _c("p", { staticClass: "notification" }, [_vm._v("Coming soon")]),
     ])
@@ -5053,7 +5053,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "dashboard" } }, [
-      _c("h1", { staticClass: "title is-2" }, [_vm._v("Dashboard")]),
+      _c("h1", { staticClass: "title is-3" }, [_vm._v("Dashboard")]),
       _vm._v(" "),
       _c("p", { staticClass: "notification" }, [_vm._v("Coming soon")]),
     ])
@@ -5089,7 +5089,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "data" } }, [
-      _c("h1", { staticClass: "title is-2" }, [_vm._v("Data")]),
+      _c("h1", { staticClass: "title is-3" }, [_vm._v("Data")]),
       _vm._v(" "),
       _c("p", { staticClass: "notification" }, [_vm._v("Coming soon")]),
     ])
@@ -5125,7 +5125,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "emails" } }, [
-      _c("h1", { staticClass: "title is-2" }, [_vm._v("Emails")]),
+      _c("h1", { staticClass: "title is-3" }, [_vm._v("Emails")]),
       _vm._v(" "),
       _c("p", { staticClass: "notification" }, [_vm._v("Coming soon")]),
     ])
@@ -5161,7 +5161,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "hooks" } }, [
-      _c("h1", { staticClass: "title is-2" }, [_vm._v("Hooks")]),
+      _c("h1", { staticClass: "title is-3" }, [_vm._v("Hooks")]),
       _vm._v(" "),
       _c("p", { staticClass: "notification" }, [_vm._v("Coming soon")]),
     ])
@@ -5197,7 +5197,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "models" } }, [
-      _c("h1", { staticClass: "title is-2" }, [_vm._v("Models")]),
+      _c("h1", { staticClass: "title is-3" }, [_vm._v("Models")]),
       _vm._v(" "),
       _c("p", { staticClass: "notification" }, [_vm._v("Coming soon")]),
     ])
@@ -5233,7 +5233,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "permissions" } }, [
-      _c("h1", { staticClass: "title is-2" }, [_vm._v("Permissions")]),
+      _c("h1", { staticClass: "title is-3" }, [_vm._v("Permissions")]),
       _vm._v(" "),
       _c("p", { staticClass: "notification" }, [_vm._v("Coming soon")]),
     ])
@@ -5269,7 +5269,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "responses" } }, [
-      _c("h1", { staticClass: "title is-2" }, [_vm._v("Responses")]),
+      _c("h1", { staticClass: "title is-3" }, [_vm._v("Responses")]),
       _vm._v(" "),
       _c("p", { staticClass: "notification" }, [_vm._v("Coming soon")]),
     ])
@@ -5305,7 +5305,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "routes" } }, [
-      _c("h1", { staticClass: "title is-2" }, [_vm._v("Routes")]),
+      _c("h1", { staticClass: "title is-3" }, [_vm._v("Routes")]),
       _vm._v(" "),
       _c("p", { staticClass: "notification" }, [_vm._v("Coming soon")]),
     ])
@@ -5341,7 +5341,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "views" } }, [
-      _c("h1", { staticClass: "title is-2" }, [_vm._v("Views")]),
+      _c("h1", { staticClass: "title is-3" }, [_vm._v("Views")]),
       _vm._v(" "),
       _c("p", { staticClass: "notification" }, [_vm._v("Coming soon")]),
     ])
