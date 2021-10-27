@@ -17,6 +17,9 @@ import { App } from '@tinyhttp/app';
 import sirv from 'sirv';
 import open from 'open';
 
+import config from './routes/config.js';
+import utils from './routes/utils.js';
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -30,6 +33,13 @@ const app = new App();
 
 app.use(`/js`, sirv(path.join(__dirname, 'dist/js'), { maxAge: 1 }));
 app.use(`/css`, sirv(path.join(__dirname, 'dist/css'), { maxAge: 1 }));
+app.use(`/images`, sirv(path.join(__dirname, 'src/images'), { maxAge: 1 }));
+
+
+/* Data routes */
+
+app.get('/read/config', config.read);
+app.get('/utils/ping/:port?', utils.ping);
 
 
 /* Respond to everything else with the same view, let Vue handle routing */

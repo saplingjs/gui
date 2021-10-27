@@ -6,6 +6,7 @@ $content-heading-weight = $weight-normal;
 $title-weight = $weight-normal;
 
 $primary = #50ce89;
+$link = $primary;
 $body-background-color = $white-ter;
 $menu-item-active-background-color = $primary;
 
@@ -14,7 +15,21 @@ $menu-item-radius = 8px;
 $menu-list-link-padding = 0.5em 2em 0.5em 0.75em
 
 
-@import 'bulma-stylus';
+@import '~bulma-stylus/stylus/utilities/_all';
+@import '~bulma-stylus/stylus/base/_all';
+@import '~bulma-stylus/stylus/layout/_all';
+@import '~bulma-stylus/stylus/helpers/_all';
+@import '~bulma-stylus/stylus/grid/_all';
+
+@import '~bulma-stylus/stylus/elements/box';
+@import '~bulma-stylus/stylus/elements/container';
+@import '~bulma-stylus/stylus/elements/content';
+@import '~bulma-stylus/stylus/elements/notification';
+@import '~bulma-stylus/stylus/elements/tag';
+@import '~bulma-stylus/stylus/elements/title';
+
+@import '~bulma-stylus/stylus/components/level';
+@import '~bulma-stylus/stylus/components/menu';
 
 
 html, body
@@ -24,3 +39,8 @@ html, body
 
 code
 	border-radius 4px
+
+.tag
+	font-weight $weight-semibold
+	text-transform uppercase
+	letter-spacing 0.05em
