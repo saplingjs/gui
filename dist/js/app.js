@@ -22162,8 +22162,8 @@ var state = {
     title: "Mail",
     fields: ["mail.host", "mail.port", "mail.secure", "mail.auth.user", "mail.auth.pass"]
   }, {
-    title: "Upload",
-    fields: ["type", "destination"]
+    title: "Uploads",
+    fields: ["upload.type", "upload.destination"]
   }],
   meta: {
     publicDir: {

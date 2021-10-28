@@ -63,10 +63,10 @@ const state = {
 			]
 		},
 		{
-			title: "Upload",
+			title: "Uploads",
 			fields: [
-				"type",
-				"destination"
+				"upload.type",
+				"upload.destination"
 			]
 		}
 	],
