@@ -1,18 +1,18 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Dashboard from './components/Dashboard.vue';
+import Dashboard from './components/routes/Dashboard.vue';
 
-import Assets from './components/Assets.vue';
-import Configuration from './components/Configuration.vue';
-import Data from './components/Data.vue';
-import Emails from './components/Emails.vue';
-import Hooks from './components/Hooks.vue';
-import Models from './components/Models.vue';
-import Permissions from './components/Permissions.vue';
-import Responses from './components/Responses.vue';
-import Routes from './components/Routes.vue';
-import Views from './components/Views.vue';
+import Assets from './components/routes/Assets.vue';
+import Configuration from './components/routes/Configuration.vue';
+import Data from './components/routes/Data.vue';
+import Emails from './components/routes/Emails.vue';
+import Hooks from './components/routes/Hooks.vue';
+import Models from './components/routes/Models.vue';
+import Permissions from './components/routes/Permissions.vue';
+import Responses from './components/routes/Responses.vue';
+import Routes from './components/routes/Routes.vue';
+import Views from './components/routes/Views.vue';
 
 Vue.use(Router);
 

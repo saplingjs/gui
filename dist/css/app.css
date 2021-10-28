@@ -244,7 +244,7 @@ code,
 pre {
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: auto;
-  font-family: monospace;
+  font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
 }
 body {
   color: #4a4a4a;
@@ -2293,10 +2293,10 @@ a.has-text-danger-dark:focus {
   font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
 }
 .is-family-monospace {
-  font-family: monospace !important;
+  font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace !important;
 }
 .is-family-code {
-  font-family: monospace !important;
+  font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace !important;
 }
 .is-block {
   display: block !important;
@@ -8521,5 +8521,20 @@ code {
   font-size: 0.675rem;
   font-weight: 400;
   color: #7a7a7a;
+}
+.prism-editor {
+  background: #363636;
+  color: #b5b5b5;
+  border-radius: 4px;
+  font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 5px;
+}
+.prism-editor pre {
+  color: #7a7a7a;
+}
+.prism-editor__textarea:focus {
+  outline: none;
 }
 

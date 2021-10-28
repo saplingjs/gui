@@ -250,7 +250,11 @@ const getters = {
 	},
 
 	getConfigValue: (state) => (key) => {
-		return dot.pick(key, state.config);
+		const value = dot.pick(key, state.config);
+		if (value === null || value === undefined) {
+			return '';
+		}
+		return typeof value === 'object' ? JSON.stringify(value) : value;
 	},
 
 	getConfigStructure: (state) => () => {

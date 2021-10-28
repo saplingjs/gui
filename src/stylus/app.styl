@@ -1,25 +1,7 @@
 @import url('https://rsms.me/inter/inter.css');
 
+@import './variables.styl';
 
-$family-primary = Inter,BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-$content-heading-weight = $weight-normal;
-$title-weight = $weight-normal;
-$label-weight = $weight-semibold;
-
-$primary = #50ce89;
-$link = $primary;
-$body-background-color = $white-ter;
-$menu-item-active-background-color = $primary;
-
-$section-padding = 2rem 0
-$box-padding = 2.5rem;
-$menu-item-radius = 8px;
-$menu-list-link-padding = 0.5em 2em 0.5em 0.75em
-$input-focus-box-shadow-size = 0 0 0 3px
-
-
-@import '~bulma-stylus/stylus/utilities/_all';
-@import '~bulma-stylus/stylus/base/_all';
 @import '~bulma-stylus/stylus/layout/_all';
 @import '~bulma-stylus/stylus/helpers/_all';
 @import '~bulma-stylus/stylus/grid/_all';
@@ -95,3 +77,20 @@ code
 		font-size 0.675rem
 		font-weight $weight-normal
 		color $grey
+
+
+.prism-editor
+	background $grey-darker
+	color $grey-light
+	border-radius 4px
+
+	font-family $family-monospace
+	font-size 14px
+	line-height 1.5
+	padding 5px
+
+	pre
+		color $grey
+
+.prism-editor__textarea:focus
+	outline none

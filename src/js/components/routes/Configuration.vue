@@ -11,7 +11,7 @@
 					:key="key"
 					class="field is-horizontal"
 					:class="{'is-active': activeField === key }"
-					@click="$refs[key][0].focus()"
+					@click="focus(key)"
 				>
 					<div class="field-label">
 						<label :for="key" class="label">
@@ -57,18 +57,36 @@
 						<div v-else-if="getConfigMetaValue(key, 'type') === 'file'" class="field has-addons">
 							<div class="control is-expanded">
 								<input
-									:value="getConfigValue(key)"
+									:value="'./' + getConfigValue(key)"
 									class="input"
 									type="text"
 									disabled
 								/>
 							</div>
+							<modal
+								:visible="activeField == key"
+								@close="activeField = ''"
+								close-button="Cancel"
+								title="Select file"
+							>
+								<div class="menu">
+									<ul class="menu-list">
+										<li v-for="file in files" :key="file">
+											<a
+												href="#"
+												@click.prevent="select(key, file)"
+												v-text="'./' + file"
+												:class="{ 'is-active': file === getConfigValue(key) }"
+											></a>
+										</li>
+									</ul>
+								</div>
+							</modal>
 							<div class="control">
 								<a
 									:id="key"
 									:ref="key"
-									@focus="activeField = key"
-									@blur="activeField = ''"
+									@click="activeField = key"
 									class="button is-primary"
 								>
 									Select file
@@ -78,22 +96,55 @@
 						<div v-else-if="getConfigMetaValue(key, 'type') === 'dir'" class="field has-addons">
 							<div class="control is-expanded">
 								<input
-									:value="'/' + getConfigValue(key)"
+									:value="'./' + getConfigValue(key)"
 									class="input"
 									type="text"
 									disabled
 								/>
 							</div>
+							<modal
+								:visible="activeField == key"
+								@close="activeField = ''"
+								close-button="Cancel"
+								title="Select directory"
+							>
+								<div class="menu">
+									<ul class="menu-list">
+										<li v-for="dir in dirs" :key="dir">
+											<a
+												href="#"
+												@click.prevent="select(key, dir)"
+												v-text="'./' + dir"
+												:class="{ 'is-active': dir === getConfigValue(key) }"
+											></a>
+										</li>
+									</ul>
+								</div>
+							</modal>
 							<div class="control">
 								<a
 									:id="key"
 									:ref="key"
-									@focus="activeField = key"
-									@blur="activeField = ''"
+									@click="activeField = key"
 									class="button is-primary"
 								>
 									Select directory
 								</a>
+							</div>
+						</div>
+						<div v-else-if="getConfigMetaValue(key, 'type') === 'code'" class="field">
+							<div class="control">
+								<prism-editor
+									:id="key"
+									:ref="key"
+									class="prism-editor"
+									:value="getConfigValue(key)"
+									@input="updateCode(key, $event)"
+									@focus="activeField = key"
+									@blur="activeField = ''"
+									:highlight="highlightJson"
+									line-numbers
+								></prism-editor>
 							</div>
 						</div>
 						<div v-else class="field">
@@ -119,6 +170,7 @@
 
 <script>
 
+import get from '../../utils/get.js';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -126,7 +178,9 @@ export default {
 
 	data() {
 		return {
-			activeField: ''
+			activeField: '',
+			dirs: [],
+			files: []
 		};
 	},
 
@@ -149,7 +203,29 @@ export default {
 				key: e.target.id,
 				value: e.target.checked
 			});
+		},
+
+		select(key, value) {
+			this.editConfigValue({ key, value });
+			this.activeField = '';
+		},
+
+		updateCode(key, value) {
+			this.editConfigValue({ key, value });
+			this.$forceUpdate();
+		},
+
+		focus(key) {
+			const ref = this.$refs[key];
+			if ('focus' in ref[0]) {
+				ref[0].focus();
+			}
 		}
+	},
+
+	async created() {
+		this.dirs = await get('/fs/dirs');
+		this.files = await get('/fs/files/json');
 	}
 };
 

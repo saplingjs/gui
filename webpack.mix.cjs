@@ -10,5 +10,5 @@ const mix = require('laravel-mix');
  */
 
 mix
-	.js('src/js/app.js', 'dist/js/').vue()
+	.js('src/js/app.js', 'dist/js/').vue().sourceMaps()
 	.stylus('src/stylus/app.styl', 'dist/css/');
