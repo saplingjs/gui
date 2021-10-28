@@ -2250,7 +2250,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this = this;
 
     /* Get config */
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/read/config').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/config/read').then(function (response) {
       _this.initConfig(response.data);
 
       _this.ping();
@@ -2360,6 +2360,83 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Configuration',
@@ -2368,7 +2445,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       activeField: ''
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(['getConfigStructure', 'getConfigValue', 'getConfigMetaValue']))
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(['getConfigStructure', 'getConfigValue', 'getConfigMetaValue'])),
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)(['editConfigValue'])), {}, {
+    change: function change(e) {
+      this.editConfigValue({
+        key: e.target.id,
+        value: e.target.value
+      });
+    },
+    toggle: function toggle(e) {
+      this.editConfigValue({
+        key: e.target.id,
+        value: e.target.checked
+      });
+    }
+  })
 });
 
 /***/ }),
@@ -4991,25 +5082,157 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "field-body" }, [
-                    _c("div", { staticClass: "field" }, [
-                      _c("p", { staticClass: "control" }, [
-                        _c("input", {
-                          ref: key,
-                          refInFor: true,
-                          staticClass: "input",
-                          attrs: { type: "text", id: key },
-                          domProps: { value: _vm.getConfigValue(key) },
-                          on: {
-                            focus: function ($event) {
-                              _vm.activeField = key
-                            },
-                            blur: function ($event) {
-                              _vm.activeField = ""
-                            },
-                          },
-                        }),
-                      ]),
-                    ]),
+                    _vm.getConfigMetaValue(key, "type") === "boolean"
+                      ? _c("div", { staticClass: "field" }, [
+                          _c("div", { staticClass: "control" }, [
+                            _c("input", {
+                              ref: key,
+                              refInFor: true,
+                              staticClass: "switch is-rounded",
+                              attrs: { id: key, type: "checkbox" },
+                              domProps: { checked: _vm.getConfigValue(key) },
+                              on: { change: _vm.toggle },
+                            }),
+                            _vm._v(" "),
+                            _c("label", { attrs: { for: key } }),
+                          ]),
+                        ])
+                      : _vm.getConfigMetaValue(key, "type") === "choice" &&
+                        _vm
+                          .getConfigMetaValue(key, "choices")
+                          .includes(_vm.getConfigValue(key))
+                      ? _c("div", { staticClass: "field" }, [
+                          _c("div", { staticClass: "control" }, [
+                            _c("div", { staticClass: "select is-fullwidth" }, [
+                              _c(
+                                "select",
+                                {
+                                  ref: key,
+                                  refInFor: true,
+                                  attrs: { id: key },
+                                  domProps: { value: _vm.getConfigValue(key) },
+                                  on: {
+                                    focus: function ($event) {
+                                      _vm.activeField = key
+                                    },
+                                    blur: function ($event) {
+                                      _vm.activeField = ""
+                                    },
+                                    change: _vm.change,
+                                  },
+                                },
+                                _vm._l(
+                                  _vm.getConfigMetaValue(key, "choices"),
+                                  function (value, i) {
+                                    return _c("option", {
+                                      key: i,
+                                      domProps: {
+                                        value: value,
+                                        textContent: _vm._s(value),
+                                      },
+                                    })
+                                  }
+                                ),
+                                0
+                              ),
+                            ]),
+                          ]),
+                        ])
+                      : _vm.getConfigMetaValue(key, "type") === "file"
+                      ? _c("div", { staticClass: "field has-addons" }, [
+                          _c("div", { staticClass: "control is-expanded" }, [
+                            _c("input", {
+                              staticClass: "input",
+                              attrs: { type: "text", disabled: "" },
+                              domProps: { value: _vm.getConfigValue(key) },
+                            }),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "control" }, [
+                            _c(
+                              "a",
+                              {
+                                ref: key,
+                                refInFor: true,
+                                staticClass: "button is-primary",
+                                attrs: { id: key },
+                                on: {
+                                  focus: function ($event) {
+                                    _vm.activeField = key
+                                  },
+                                  blur: function ($event) {
+                                    _vm.activeField = ""
+                                  },
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\tSelect file\n\t\t\t\t\t\t\t"
+                                ),
+                              ]
+                            ),
+                          ]),
+                        ])
+                      : _vm.getConfigMetaValue(key, "type") === "dir"
+                      ? _c("div", { staticClass: "field has-addons" }, [
+                          _c("div", { staticClass: "control is-expanded" }, [
+                            _c("input", {
+                              staticClass: "input",
+                              attrs: { type: "text", disabled: "" },
+                              domProps: {
+                                value: "/" + _vm.getConfigValue(key),
+                              },
+                            }),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "control" }, [
+                            _c(
+                              "a",
+                              {
+                                ref: key,
+                                refInFor: true,
+                                staticClass: "button is-primary",
+                                attrs: { id: key },
+                                on: {
+                                  focus: function ($event) {
+                                    _vm.activeField = key
+                                  },
+                                  blur: function ($event) {
+                                    _vm.activeField = ""
+                                  },
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\tSelect directory\n\t\t\t\t\t\t\t"
+                                ),
+                              ]
+                            ),
+                          ]),
+                        ])
+                      : _c("div", { staticClass: "field" }, [
+                          _c("div", { staticClass: "control" }, [
+                            _c("input", {
+                              ref: key,
+                              refInFor: true,
+                              staticClass: "input",
+                              attrs: {
+                                type: _vm.getConfigMetaValue(key, "type"),
+                                id: key,
+                              },
+                              domProps: { value: _vm.getConfigValue(key) },
+                              on: {
+                                focus: function ($event) {
+                                  _vm.activeField = key
+                                },
+                                blur: function ($event) {
+                                  _vm.activeField = ""
+                                },
+                                input: _vm.change,
+                              },
+                            }),
+                          ]),
+                        ]),
                   ]),
                 ]
               )
@@ -22145,7 +22368,7 @@ var state = {
   },
   structure: [{
     title: "Server",
-    fields: ["url", "port", "production"]
+    fields: ["name", "url", "port", "production"]
   }, {
     title: "Views + Routing",
     fields: ["autoRouting", "routes", "publicDir", "viewsDir", "extension", "render.driver"]
@@ -22157,7 +22380,7 @@ var state = {
     fields: ["hooks", "hooksDir"]
   }, {
     title: "Security",
-    fields: ["secret", "strict", "showError", "limit", "sessionStore.type", "sessionStore.options"]
+    fields: ["secret", "strict", "showError", "sessionStore.type", "sessionStore.options"]
   }, {
     title: "Mail",
     fields: ["mail.host", "mail.port", "mail.secure", "mail.auth.user", "mail.auth.pass"]
@@ -22166,6 +22389,11 @@ var state = {
     fields: ["upload.type", "upload.destination"]
   }],
   meta: {
+    name: {
+      label: 'Project name',
+      description: 'Name of your project. No spaces, please',
+      type: 'text'
+    },
     publicDir: {
       label: 'Public directory',
       description: 'Directory where publicly available files (images, CSS, etc) are kept',
@@ -22295,7 +22523,7 @@ var state = {
         pass: {
           label: 'Password',
           description: 'Mail server authentication password',
-          type: 'text'
+          type: 'password'
         }
       }
     },

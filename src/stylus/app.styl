@@ -26,6 +26,7 @@ $input-focus-box-shadow-size = 0 0 0 3px
 @import '~bulma-stylus/stylus/form/_all';
 
 @import '~bulma-stylus/stylus/elements/box';
+@import '~bulma-stylus/stylus/elements/button';
 @import '~bulma-stylus/stylus/elements/container';
 @import '~bulma-stylus/stylus/elements/content';
 @import '~bulma-stylus/stylus/elements/notification';
@@ -34,6 +35,8 @@ $input-focus-box-shadow-size = 0 0 0 3px
 
 @import '~bulma-stylus/stylus/components/level';
 @import '~bulma-stylus/stylus/components/menu';
+
+@import './components/switch.styl';
 
 
 html, body
@@ -63,13 +66,13 @@ code
 	&:hover
 		background $white-bis
 
-		.input
+		.input:not([disabled])
 			border-color $input-hover-border-color
 
 	&:active, &.is-active
 		background rgba($primary, 0.15)
 
-		.input
+		.input:not([disabled])
 			border-color $input-focus-border-color
 	
 	.input

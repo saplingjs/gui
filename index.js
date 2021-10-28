@@ -18,6 +18,7 @@ import sirv from 'sirv';
 import open from 'open';
 
 import config from './routes/config.js';
+import fs from './routes/fs.js';
 import utils from './routes/utils.js';
 
 
@@ -43,8 +44,10 @@ app.use(`/images`, sirv(path.join(__dirname, 'src/images'), sirvSettings));
 
 /* Data routes */
 
-app.get('/read/config', config.read);
+app.get('/config/read', config.read);
 app.get('/utils/ping/:port?', utils.ping);
+app.get('/fs/dirs', fs.dirs);
+app.get('/fs/files/:extension?', fs.files);
 
 
 /* Respond to everything else with the same view, let Vue handle routing */

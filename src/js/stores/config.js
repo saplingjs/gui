@@ -10,6 +10,7 @@ const state = {
 		{
 			title: "Server",
 			fields: [
+				"name",
 				"url",
 				"port",
 				"production"
@@ -47,7 +48,6 @@ const state = {
 				"secret",
 				"strict",
 				"showError",
-				"limit",
 				"sessionStore.type",
 				"sessionStore.options"
 			]
@@ -72,6 +72,11 @@ const state = {
 	],
 
 	meta: {
+		name: {
+			label: 'Project name',
+			description: 'Name of your project. No spaces, please',
+			type: 'text'
+		},
 		publicDir: {
 			label: 'Public directory',
 			description: 'Directory where publicly available files (images, CSS, etc) are kept',
@@ -201,7 +206,7 @@ const state = {
 				pass: {
 					label: 'Password',
 					description: 'Mail server authentication password',
-					type: 'text'
+					type: 'password'
 				},
 			},
 		},

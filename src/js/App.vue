@@ -87,7 +87,7 @@ export default {
 
 	created() {
 		/* Get config */
-		axios.get('/read/config')
+		axios.get('/config/read')
 			.then((response) => {
 				this.initConfig(response.data);
 				this.ping();
