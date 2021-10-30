@@ -45,6 +45,7 @@
 	"devDependencies": {
 		"cross-env": "^7.0.3",
 		"laravel-mix": "^6.0.36",
+		"rimraf": "^3.0.2",
 		"stylus": "^0.55.0",
 		"stylus-loader": "^6.2.0",
 		"vue-loader": "^15.9.8",
@@ -60,7 +61,10 @@
 		"prepare": "mix --production"
 	},
 	"files": [
-		"dist",
+		"dist/css",
+		"dist/js",
+		"dist/images",
+		"dist/views",
 		"routes",
 		"index.js"
 	]
