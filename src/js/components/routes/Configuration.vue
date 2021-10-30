@@ -28,19 +28,19 @@
 										:ref="key"
 										type="checkbox"
 										class="switch is-rounded"
-										:checked="getConfigValue(key)"
+										:checked="config[key]"
 										@change="toggle"
 									/>
 									<label :for="key"></label>
 								</div>
 							</div>
-							<div v-else-if="getConfigMetaValue(key, 'type') === 'choice' && getConfigMetaValue(key, 'choices').includes(getConfigValue(key))" class="field">
+							<div v-else-if="getConfigMetaValue(key, 'type') === 'choice' && getConfigMetaValue(key, 'choices').includes(config[key])" class="field">
 								<div class="control">
 									<div class="select is-fullwidth">
 										<select
 											:id="key"
 											:ref="key"
-											:value="getConfigValue(key)"
+											:value="config[key]"
 											@focus="activeField = key"
 											@blur="activeField = ''"
 											@change="change"
@@ -58,7 +58,7 @@
 							<div v-else-if="getConfigMetaValue(key, 'type') === 'file'" class="field has-addons">
 								<div class="control is-expanded">
 									<input
-										:value="'./' + getConfigValue(key)"
+										:value="'./' + config[key]"
 										class="input"
 										type="text"
 										disabled
@@ -77,7 +77,7 @@
 													href="#"
 													@click.prevent="select(key, file)"
 													v-text="'./' + file"
-													:class="{ 'is-active': file === getConfigValue(key) }"
+													:class="{ 'is-active': file === config[key] }"
 												></a>
 											</li>
 										</ul>
@@ -97,7 +97,7 @@
 							<div v-else-if="getConfigMetaValue(key, 'type') === 'dir'" class="field has-addons">
 								<div class="control is-expanded">
 									<input
-										:value="'./' + getConfigValue(key)"
+										:value="'./' + config[key]"
 										class="input"
 										type="text"
 										disabled
@@ -116,7 +116,7 @@
 													href="#"
 													@click.prevent="select(key, dir)"
 													v-text="'./' + dir"
-													:class="{ 'is-active': dir === getConfigValue(key) }"
+													:class="{ 'is-active': dir === config[key] }"
 												></a>
 											</li>
 										</ul>
@@ -139,8 +139,8 @@
 										:id="key"
 										:ref="key"
 										class="prism-editor"
-										:value="getConfigValue(key)"
-										@input="updateCode(key, $event)"
+										v-model="config[key]"
+										@keyup="saveDisabled = false"
 										@focus="activeField = key"
 										@blur="activeField = ''"
 										:highlight="highlightJson"
@@ -155,7 +155,7 @@
 										class="input"
 										:id="key"
 										:ref="key"
-										:value="getConfigValue(key)"
+										:value="config[key]"
 										@focus="activeField = key"
 										@blur="activeField = ''"
 										@input="change"
@@ -182,7 +182,10 @@
 
 <script>
 
+import dot from 'dot-object';
+
 import get from '../../utils/get.js';
+import post from '../../utils/post.js';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -190,6 +193,7 @@ export default {
 
 	data() {
 		return {
+			config: {},
 			activeField: '',
 			saveDisabled: true,
 			dirs: [],
@@ -198,37 +202,25 @@ export default {
 	},
 
 	computed: {
-		...mapGetters(['getConfigStructure', 'getConfigValue', 'getConfigMetaValue'])
+		...mapGetters(['getFlatConfig', 'getConfigStructure', 'getConfigMetaValue'])
 	},
 
 	methods: {
-		...mapActions(['editConfigValue']),
+		...mapActions(['setConfig']),
 
 		change(e) {
-			this.editConfigValue({
-				key: e.target.id,
-				value: e.target.value
-			});
+			this.config[e.target.id] = e.target.value;
 			this.saveDisabled = false;
 		},
 
 		toggle(e) {
-			this.editConfigValue({
-				key: e.target.id,
-				value: e.target.checked
-			});
+			this.config[e.target.id] = e.target.checked;
 			this.saveDisabled = false;
 		},
 
 		select(key, value) {
-			this.editConfigValue({ key, value });
+			this.config[key] = value;
 			this.activeField = '';
-			this.saveDisabled = false;
-		},
-
-		updateCode(key, value) {
-			this.editConfigValue({ key, value });
-			this.$forceUpdate();
 			this.saveDisabled = false;
 		},
 
@@ -239,14 +231,17 @@ export default {
 			}
 		},
 
-		save() {
+		async save() {
 			this.saveDisabled = true;
+			await post('/config/write', this.config);
+			this.$emit('change');
 		}
 	},
 
 	async created() {
 		this.dirs = await get('/fs/dirs');
 		this.files = await get('/fs/files/json');
+		this.config = this.getFlatConfig();
 	}
 };
 

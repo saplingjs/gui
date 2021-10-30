@@ -45,6 +45,7 @@ app.use(`/images`, sirv(path.join(__dirname, 'src/images'), sirvSettings));
 /* Data routes */
 
 app.get('/config/read', config.read);
+app.post('/config/write', config.write);
 app.get('/utils/ping/:port?', utils.ping);
 app.get('/fs/dirs', fs.dirs);
 app.get('/fs/files/:extension?', fs.files);

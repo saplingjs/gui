@@ -55,7 +55,7 @@
 				</aside>
 				<main class="column">
 					<div class="box">
-						<router-view />
+						<router-view v-if="!loading" @change="update" />
 					</div>
 				</main>
 			</div>
@@ -68,12 +68,16 @@
 import axios from 'axios';
 import { mapGetters, mapActions } from 'vuex';
 
+import get from './utils/get.js';
+
+
 export default {
 	name: 'App',
 
 	data() {
 		return {
-			running: false
+			running: false,
+			loading: true
 		};
 	},
 
@@ -85,13 +89,11 @@ export default {
 		}
 	},
 
-	created() {
+	async created() {
 		/* Get config */
-		axios.get('/config/read')
-			.then((response) => {
-				this.initConfig(response.data);
-				this.ping();
-			});
+		this.initConfig(await get('/config/read'));
+		this.loading = false;
+		this.ping();
 	},
 
 	mounted() {
@@ -102,12 +104,13 @@ export default {
 	methods: {
 		...mapActions(['initConfig']),
 
-		ping() {
+		async ping() {
 			/* Check if it's running */
-			axios.get(`/utils/ping/${this.getConfigValue('port')}`)
-				.then((response) => {
-					this.running = response.data.reachable;
-				});
+			this.running = (await get(`/utils/ping/${this.getConfigValue('port')}`)).reachable;
+		},
+
+		async update() {
+			this.initConfig(await get('/config/read'));
 		}
 	}
 };

@@ -240,21 +240,37 @@ function capitalize(s) {
 	return s && s[0].toUpperCase() + s.slice(1);
 }
 
+function formatMeta(key, value, meta) {
+	let formattedMeta = meta ? meta : { label: capitalize(key).replaceAll('.', ' ') };
+	return formattedMeta[value] ? formattedMeta[value] : '';
+}
+
+function formatField(state, key, value) {
+	if (value === null || typeof value === 'undefined') {
+		let meta = dot.pick(key, state.meta);
+		return formatMeta(key, 'type', meta) === 'code' ? '{}' : '';
+	}
+	return typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
+}
+
 const getters = {
 	getConfig: (state) => () => {
 		return state.config;
 	},
 
 	getFlatConfig: (state) => () => {
-		return dot.dot(state.config);
+		let config = dot.dot(state.config)
+
+		Object.keys(config).forEach(key => {
+			config[key] = formatField(state, key, config[key]);
+		});
+
+		return config;
 	},
 
-	getConfigValue: (state, getters) => (key) => {
+	getConfigValue: (state) => (key) => {
 		const value = dot.pick(key, state.config);
-		if (value === null || typeof value === 'undefined') {
-			return getters.getConfigMetaValue(key, 'type') === 'code' ? '{}' : '';
-		}
-		return typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
+		return formatField(state, key, value);
 	},
 
 	getConfigStructure: (state) => () => {
@@ -263,8 +279,7 @@ const getters = {
 
 	getConfigMetaValue: (state) => (key, value) => {
 		let meta = dot.pick(key, state.meta);
-		meta = meta ? meta : { label: capitalize(key).replaceAll('.', ' ') };
-		return meta[value] ? meta[value] : '';
+		return formatMeta(key, value, meta);
 	}
 };
 
