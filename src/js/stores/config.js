@@ -249,12 +249,12 @@ const getters = {
 		return dot.dot(state.config);
 	},
 
-	getConfigValue: (state) => (key) => {
+	getConfigValue: (state, getters) => (key) => {
 		const value = dot.pick(key, state.config);
-		if (value === null || value === undefined) {
-			return '';
+		if (value === null || typeof value === 'undefined') {
+			return getters.getConfigMetaValue(key, 'type') === 'code' ? '{}' : '';
 		}
-		return typeof value === 'object' ? JSON.stringify(value) : value;
+		return typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
 	},
 
 	getConfigStructure: (state) => () => {
@@ -270,7 +270,7 @@ const getters = {
 
 const actions = {
 	editConfigValue({ commit }, { key, value }) {
-		if (value === '' || value === null || value === undefined) {
+		if (value === '' || value === null || typeof value === 'undefined') {
 			commit('unsetConfigValue', { key });
 		} else {
 			commit('setConfigValue', { key, value });
@@ -288,7 +288,12 @@ const mutations = {
 	},
 
 	setConfigValue: (state, { key, value }) => {
-		dot.str(key, value, state.config);
+		let formattedValue = value;
+		try {
+			formattedValue = JSON.parse(value);
+		} catch {}
+
+		dot.str(key, formattedValue, state.config);
 	},
 
 	unsetConfigValue: (state, { key }) => {

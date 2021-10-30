@@ -105,11 +105,8 @@ export default {
 		ping() {
 			/* Check if it's running */
 			axios.get(`/utils/ping/${this.getConfigValue('port')}`)
-				.then(() => {
-					this.running = true;
-				})
-				.catch(() => {
-					this.running = false;
+				.then((response) => {
+					this.running = response.data.reachable;
 				});
 		}
 	}
@@ -149,6 +146,35 @@ export default {
 	main > .box
 		width 100%
 		height 100%
-		overflow-y auto
+		padding 0
+		overflow hidden
+
+		& > *
+			width 100%
+			height 100%
+			overflow-y auto
+			padding 2.5rem
+
+			&.has-footer
+				display flex
+				flex-direction column
+				overflow visible
+				padding 0
+
+				& > main
+					flex 2
+					overflow-y auto
+					padding 2.5rem 2.5rem 1.5rem
+
+					&.is-scrolled
+						& + footer
+							box-shadow none !important
+				
+				& > footer
+					padding 1.5rem 2.5rem
+					border-top 1px solid rgba(0,0,0,.08)
+					box-shadow 0 -4px 16px 0 rgba(0,0,0,.08)
+					transition 0.3s box-shadow ease-in-out
+					z-index 2
 
 </style>

@@ -25,12 +25,22 @@ import 'prismjs/components/prism-json.js';
 import 'prismjs/themes/prism-tomorrow.css';
 
 Vue.mixin({
+	data() {
+		return {
+			isScrolled: false
+		}
+	},
+
 	methods: {
 		highlightJson(code) {
 			return highlight(code, languages.json);
 		},
 		highlightJs(code) {
 			return highlight(code, languages.js);
+		},
+		scroll(e) {
+			const el = e.target;
+			this.isScrolled = el.scrollHeight - el.scrollTop === el.clientHeight;
 		}
 	}
 });

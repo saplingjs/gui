@@ -34,7 +34,7 @@ const app = new App();
 
 const sirvSettings = {
 	maxAge: 1,
-	dev: process.env.NODE_ENV === 'development'
+	dev: process.env.NODE_ENV !== 'production'
 };
 
 app.use(`/js`, sirv(path.join(__dirname, 'dist/js'), sirvSettings));
