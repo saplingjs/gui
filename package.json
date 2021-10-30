@@ -53,18 +53,15 @@
 	},
 	"scripts": {
 		"dev": "npm run development",
-		"development": "mix",
-		"watch": "mix watch",
-		"hot": "mix watch --hot",
+		"development": "rimraf dist && mix",
+		"watch": "rimraf dist && mix watch",
+		"hot": "rimraf dist && mix watch --hot",
 		"prod": "npm run production",
-		"production": "mix --production",
-		"prepare": "mix --production"
+		"production": "rimraf dist && mix --production",
+		"prepare": "npm run production"
 	},
 	"files": [
-		"dist/css",
-		"dist/js",
-		"dist/images",
-		"dist/views",
+		"dist",
 		"routes",
 		"index.js"
 	]
