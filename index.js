@@ -39,7 +39,7 @@ const sirvSettings = {
 
 app.use(`/js`, sirv(path.join(__dirname, 'dist/js'), sirvSettings));
 app.use(`/css`, sirv(path.join(__dirname, 'dist/css'), sirvSettings));
-app.use(`/images`, sirv(path.join(__dirname, 'src/images'), sirvSettings));
+app.use(`/images`, sirv(path.join(__dirname, 'dist/images'), sirvSettings));
 
 
 /* Data routes */
@@ -56,9 +56,9 @@ app.get('/fs/files/:extension?', fs.files);
 app.get('*', (request, response) => {
 	/* Guess whether it's a valid Sapling project or not */
 	if (exists(path.join(process.cwd(), 'node_modules/@sapling/sapling'))) {
-		response.send(read(path.join(__dirname, 'src/index.html')).toString());
+		response.send(read(path.join(__dirname, 'dist/views/index.html')).toString());
 	} else {
-		const html = read(path.join(__dirname, 'src/invalid.html')).toString();
+		const html = read(path.join(__dirname, 'dist/views/invalid.html')).toString();
 		response.send(html.replace('<span>this directory</span>', `<code>${process.cwd()}</code>`));
 	}
 });

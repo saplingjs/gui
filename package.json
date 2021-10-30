@@ -56,6 +56,12 @@
 		"watch": "mix watch",
 		"hot": "mix watch --hot",
 		"prod": "npm run production",
-		"production": "mix --production"
-	}
+		"production": "mix --production",
+		"prepare": "mix --production"
+	},
+	"files": [
+		"dist",
+		"routes",
+		"index.js"
+	]
 }
