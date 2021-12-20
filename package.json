@@ -46,7 +46,7 @@
 		"cross-env": "^7.0.3",
 		"laravel-mix": "^6.0.39",
 		"rimraf": "^3.0.2",
-		"stylus": "^0.55.0",
+		"stylus": "^0.56.0",
 		"stylus-loader": "^6.2.0",
 		"vue-loader": "^15.9.8",
 		"vue-template-compiler": "^2.6.14"
