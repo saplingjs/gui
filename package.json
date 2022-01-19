@@ -44,7 +44,7 @@
 	},
 	"devDependencies": {
 		"cross-env": "^7.0.3",
-		"laravel-mix": "^6.0.39",
+		"laravel-mix": "^6.0.41",
 		"rimraf": "^3.0.2",
 		"stylus": "^0.56.0",
 		"stylus-loader": "^6.2.0",
