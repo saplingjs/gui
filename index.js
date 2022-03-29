@@ -14,6 +14,7 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 import { App } from '@tinyhttp/app';
+import getPort from 'get-port';
 import sirv from 'sirv';
 import open from 'open';
 
@@ -67,7 +68,7 @@ app.get('*', (request, response) => {
 /* Listen on the port defined, or 4000 */
 
 const argv = yargs(hideBin(process.argv)).argv;
-const port = Number(argv.port) || 4000;
+const port = await getPort({ port: Number(argv.port) || 4000 });
 app.listen(port);
 
 

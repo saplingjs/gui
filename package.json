@@ -28,6 +28,7 @@
 		"bulma-stylus": "^0.9.2-rc.1",
 		"directory-tree": "^3.0.0",
 		"dot-object": "^2.1.4",
+		"get-port": "^6.0.0",
 		"is-port-reachable": "^4.0.0",
 		"milliparsec": "^2.2.0",
 		"open": "^8.4.0",
