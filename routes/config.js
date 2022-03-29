@@ -9,22 +9,21 @@ import { readFileSync as read, existsSync as exists, writeFileSync as write } fr
 import path from 'node:path';
 import process from 'node:process';
 
+import { digest } from '@sapling/sapling/core/loadConfig.js';
+
 import dot from 'dot-object';
 import { json } from 'milliparsec';
 
 
 export default {
-	read: (request, response) => {
-		const configFile = path.join(process.cwd(), 'config.json');
-
-		if (exists(configFile)) {
-			try {
-				response.json(JSON.parse(read(configFile).toString()));
-			} catch (error) {
-				response.status(500).send(error);
-			}
-		} else {
-			response.json({"name": "untitled"});
+	read: async (request, response) => {
+		try {
+			response.json(await digest.call({
+				dir: process.cwd(),
+				opts: {}
+			}));
+		} catch (error) {
+			response.status(500).send(error);
 		}
 	},
 
