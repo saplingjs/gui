@@ -49,8 +49,7 @@ export default {
 	},
 
 	files: (request, response) => {
-		/* https://github.com/tinyhttp/tinyhttp/issues/331 */
-		const extension = request.params.extension !== 'undefined' ? request.params.extension : 'json';
+		const extension = request.params.extension || 'json';
 		const dirs = dir(process.cwd(), {
 			exclude: /node_modules/,
 			attributes: ['type'],
