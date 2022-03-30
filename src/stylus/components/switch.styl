@@ -9,10 +9,10 @@ $switch-paddle-transition ?= all 0.25s ease-out
 
 switch-size($size)
 	$switch-height = $size * 1.5
-	$switch-width = $switch-height * 2
+	$switch-width = $switch-height * 1.75
 	$paddle-height = $switch-height - ($switch-paddle-offset * 2)
 	$paddle-width = $switch-height - ($switch-paddle-offset * 2)
-	$paddle-active-offest = $switch-width - $paddle-width - ($switch-paddle-offset * 1.5)
+	$paddle-active-offset = $switch-width - $paddle-width - $switch-paddle-offset
 
 	& + label
 		position relative
@@ -64,7 +64,7 @@ switch-size($size)
 			&::after,
 			&:after
 				left auto
-				right $paddle-active-offest
+				right $paddle-active-offset
 
 	&:checked
 		& + label
@@ -72,7 +72,7 @@ switch-size($size)
 			&:before
 				background $switch-background-active
 			&::after
-				left $paddle-active-offest
+				left $paddle-active-offset
 		&.is-rtl
 			& + label
 				&::after,
