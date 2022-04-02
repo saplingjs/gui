@@ -182,8 +182,6 @@
 
 <script>
 
-import dot from 'dot-object';
-
 import get from '../../utils/get.js';
 import post from '../../utils/post.js';
 import { mapGetters, mapActions } from 'vuex';

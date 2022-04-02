@@ -1,5 +1,7 @@
 import dot from 'dot-object';
 
+import formatMeta from '../utils/formatMeta.js';
+
 const state = {
 	config: {
 		name: "untitled",
@@ -235,15 +237,6 @@ const state = {
 		}
 	}
 };
-
-function capitalize(s) {
-	return s && s[0].toUpperCase() + s.slice(1);
-}
-
-function formatMeta(key, value, meta) {
-	let formattedMeta = meta ? meta : { label: capitalize(key).replaceAll('.', ' ') };
-	return formattedMeta[value] ? formattedMeta[value] : '';
-}
 
 function formatField(state, key, value) {
 	if (value === null || typeof value === 'undefined') {

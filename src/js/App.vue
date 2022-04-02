@@ -24,10 +24,10 @@
 		</header>
 		<div class="column">
 			<div class="columns">
-				<aside class="column is-narrow">
+				<aside id="menu" class="column is-narrow">
 					<nav class="menu">
 						<ul class="menu-list">
-							<li><router-link to="/">Dashboard</router-link></li>
+							<li><router-link to="/" active-class="">Dashboard</router-link></li>
 						</ul>
 						<p class="menu-label">App</p>
 						<ul class="menu-list">
@@ -53,7 +53,7 @@
 						</ul>
 					</nav>
 				</aside>
-				<main class="column">
+				<main id="main" class="column">
 					<div class="box">
 						<router-view v-if="!loading" @change="update" />
 					</div>

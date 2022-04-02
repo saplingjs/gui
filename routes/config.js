@@ -5,7 +5,7 @@
 
 /* Dependencies */
 
-import { readFileSync as read, existsSync as exists, writeFileSync as write } from 'node:fs';
+import { writeFileSync as write } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 

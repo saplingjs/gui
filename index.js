@@ -20,6 +20,7 @@ import open from 'open';
 
 import config from './routes/config.js';
 import fs from './routes/fs.js';
+import models from './routes/models.js';
 import utils from './routes/utils.js';
 
 
@@ -47,9 +48,10 @@ app.use(`/images`, sirv(path.join(__dirname, 'dist/images'), sirvSettings));
 
 app.get('/config/read', config.read);
 app.post('/config/write', config.write);
-app.get('/utils/ping/:port?', utils.ping);
 app.get('/fs/dirs', fs.dirs);
 app.get('/fs/files/:extension?', fs.files);
+app.get('/models/read', models.read);
+app.get('/utils/ping/:port?', utils.ping);
 
 
 /* Respond to everything else with the same view, let Vue handle routing */

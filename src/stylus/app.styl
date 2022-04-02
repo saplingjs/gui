@@ -15,6 +15,7 @@
 @import '~bulma-stylus/stylus/elements/tag';
 @import '~bulma-stylus/stylus/elements/title';
 
+@import '~bulma-stylus/stylus/components/dropdown';
 @import '~bulma-stylus/stylus/components/level';
 @import '~bulma-stylus/stylus/components/menu';
 
@@ -77,6 +78,35 @@ code
 		font-size 0.675rem
 		font-weight $weight-normal
 		color $grey
+
+main#main
+	.menu-list a.is-active
+		background $dark
+
+.menu-list > li
+	position relative
+
+	.dropdown
+		position absolute
+		top 0
+		right 0
+		height 100%
+		display none
+
+		.dropdown-trigger a
+			background url('/images/ellipsis.svg') no-repeat
+			padding 0
+			height 100%
+			width 2.25rem
+
+			&:hover
+				background-color rgba(0,0,0,.25)
+		
+		.dropdown-item
+			border-radius 0
+	
+	a.is-active + .dropdown
+		display inline-flex
 
 
 .prism-editor

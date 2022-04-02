@@ -19,6 +19,7 @@ Vue.use(Router);
 const router = new Router({
 	mode: 'history',
 	linkExactActiveClass: 'is-active',
+	linkActiveClass: 'is-active',
 	routes: [
 		{
 			path: '/',
@@ -69,7 +70,7 @@ const router = new Router({
 			}
 		},
 		{
-			path: "/models",
+			path: "/models/:model?/:field?",
 			name: "Models",
 			component: Models,
 			meta: {
