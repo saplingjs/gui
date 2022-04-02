@@ -1,7 +1,12 @@
 <template>
 	<div id="configuration" class="has-footer">
 		<main @scroll="scroll" :class="{ 'is-scrolled': isScrolled }">
-			<h1 class="title is-3">Configuration</h1>
+			<h1 class="title is-3">
+				Configuration
+				<a href="https://www.saplingjs.com/docs/#/config" target="_blank" rel="noopener">
+					<img src="/images/documentation.svg" alt="Read the documentation" />
+				</a>
+			</h1>
 
 			<form>
 				<section v-for="(section, i) in getConfigStructure()" :key="i" class="section">

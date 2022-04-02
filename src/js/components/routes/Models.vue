@@ -1,7 +1,12 @@
 <template>
 	<div id="models" class="has-footer">
 		<main @scroll="scroll" :class="{ 'is-scrolled': isScrolled }">
-			<h1 class="title is-3">Models</h1>
+			<h1 class="title is-3">
+				Models
+				<a href="https://www.saplingjs.com/docs/#/models" target="_blank" rel="noopener">
+					<img src="/images/documentation.svg" alt="Read the documentation" />
+				</a>
+			</h1>
 			
 			<div class="columns" v-if="models">
 				<div class="column is-narrow">
