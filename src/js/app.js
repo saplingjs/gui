@@ -22,6 +22,7 @@ import { highlight, languages } from 'prismjs/components/prism-core.js';
 import 'prismjs/components/prism-clike.js';
 import 'prismjs/components/prism-javascript.js';
 import 'prismjs/components/prism-json.js';
+import 'prismjs/components/prism-markup.js';
 import 'prismjs/themes/prism-tomorrow.css';
 
 Vue.mixin({
@@ -37,6 +38,9 @@ Vue.mixin({
 		},
 		highlightJs(code) {
 			return highlight(code, languages.js);
+		},
+		highlightHtml(code) {
+			return highlight(code, languages.markup);
 		},
 		scroll(e) {
 			const el = e.target;

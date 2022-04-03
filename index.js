@@ -21,6 +21,7 @@ import open from 'open';
 import config from './routes/config.js';
 import fs from './routes/fs.js';
 import models from './routes/models.js';
+import responses from './routes/responses.js';
 import utils from './routes/utils.js';
 
 
@@ -51,6 +52,8 @@ app.post('/config/write', config.write);
 app.get('/fs/dirs', fs.dirs);
 app.get('/fs/files/:extension?', fs.files);
 app.get('/models/read', models.read);
+app.get('/responses/read', responses.read);
+app.post('/responses/write', responses.write);
 app.get('/utils/ping/:port?', utils.ping);
 
 

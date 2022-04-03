@@ -1,5 +1,5 @@
 /**
- * Config routes
+ * Model routes
  */
 
 

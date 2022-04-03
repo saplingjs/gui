@@ -12,7 +12,6 @@
 @import '~bulma-stylus/stylus/elements/container';
 @import '~bulma-stylus/stylus/elements/content';
 @import '~bulma-stylus/stylus/elements/notification';
-@import '~bulma-stylus/stylus/elements/tag';
 @import '~bulma-stylus/stylus/elements/title';
 
 @import '~bulma-stylus/stylus/components/dropdown';
@@ -29,11 +28,6 @@ html, body
 
 code
 	border-radius 4px
-
-.tag
-	font-weight $weight-semibold
-	text-transform uppercase
-	letter-spacing 0.05em
 
 .title
 	img
@@ -90,9 +84,21 @@ code
 		font-weight $weight-normal
 		color $grey
 
+
+#header
+	@import '~bulma-stylus/stylus/elements/tag';
+
+	.tag
+		font-weight $weight-semibold
+		text-transform uppercase
+		letter-spacing 0.05em
+
 main#main
-	.menu-list a.is-active
-		background $dark
+	.menu-list
+		min-width 8rem
+
+		a.is-active
+			background $dark
 
 .menu-list > li
 	position relative
@@ -103,6 +109,9 @@ main#main
 		right 0
 		height 100%
 		display none
+
+		.dropdown-menu
+			min-width 0
 
 		.dropdown-trigger a
 			background url('/images/ellipsis.svg') no-repeat
@@ -120,6 +129,8 @@ main#main
 		display inline-flex
 
 
+/* Code editor */
+
 .prism-editor
 	background $grey-darker
 	color $grey-light
@@ -131,7 +142,11 @@ main#main
 	padding 5px
 
 	pre
-		color $grey
+		color $white
+	
+	.prism-editor__line-number
+		pointer-events none
+		user-select none
 
 .prism-editor__textarea:focus
 	outline none

@@ -86,7 +86,7 @@ const router = new Router({
 			}
 		},
 		{
-			path: "/responses",
+			path: "/responses/:template?",
 			name: "Responses",
 			component: Responses,
 			meta: {

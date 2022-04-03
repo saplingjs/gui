@@ -1,6 +1,6 @@
 <template>
 	<div id="app" class="columns">
-		<header class="column is-narrow">
+		<header id="header" class="column is-narrow">
 			<div class="level">
 				<div class="level-left">
 					<div class="level-item">
@@ -128,7 +128,7 @@ export default {
 	& > .column
 		overflow hidden
 
-	header
+	#header
 		img
 			height 32px
 			margin-right 16px
@@ -141,43 +141,51 @@ export default {
 		height 100%
 		height calc(100% + 1.5rem)
 
-	aside
+	#menu
 		padding-right 2rem
 		padding-top 1.5rem
 		overflow-y auto
 	
-	main > .box
-		width 100%
-		height 100%
-		padding 0
-		overflow hidden
+	#main
+		width: 100%;
+		overflow: hidden;
 
-		& > *
+		& > .box
 			width 100%
 			height 100%
-			overflow-y auto
-			padding 2.5rem
+			padding 0
+			overflow hidden
 
-			&.has-footer
-				display flex
-				flex-direction column
-				overflow visible
-				padding 0
+			& > *
+				width 100%
+				height 100%
+				overflow-y auto
+				padding 2.5rem
 
-				& > main
-					flex 2
-					overflow-y auto
-					padding 2.5rem 2.5rem 1.5rem
+				&.has-footer
+					display flex
+					flex-direction column
+					overflow visible
+					padding 0
 
-					&.is-scrolled
-						& + footer
-							box-shadow none !important
-				
-				& > footer
-					padding 1.5rem 2.5rem
-					border-top 1px solid rgba(0,0,0,.08)
-					box-shadow 0 -4px 16px 0 rgba(0,0,0,.08)
-					transition 0.3s box-shadow ease-in-out
-					z-index 2
+					& > main
+						flex 2
+						padding 2.5rem 2.5rem 1.5rem
+
+						&:not(.no-scroll)
+							overflow-y auto
+							
+							& + footer
+								box-shadow 0 -4px 16px 0 rgba(0,0,0,.08)
+								transition 0.3s box-shadow ease-in-out
+
+							&.is-scrolled
+								& + footer
+									box-shadow none !important
+					
+					& > footer
+						padding 1.5rem 2.5rem
+						border-top 1px solid rgba(0,0,0,.08)
+						z-index 2
 
 </style>
