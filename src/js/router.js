@@ -26,90 +26,90 @@ const router = new Router({
 			name: 'Dashboard',
 			component: Dashboard,
 			meta: {
-				title: "Dashboard"
-			}
+				title: 'Dashboard',
+			},
 		},
 		{
-			path: "/assets",
-			name: "Assets",
+			path: '/assets',
+			name: 'Assets',
 			component: Assets,
 			meta: {
-				title: "Assets"
-			}
+				title: 'Assets',
+			},
 		},
 		{
-			path: "/configuration",
-			name: "Configuration",
+			path: '/configuration',
+			name: 'Configuration',
 			component: Configuration,
 			meta: {
-				title: "Configuration"
-			}
+				title: 'Configuration',
+			},
 		},
 		{
-			path: "/data",
-			name: "Data",
+			path: '/data',
+			name: 'Data',
 			component: Data,
 			meta: {
-				title: "Data"
-			}
+				title: 'Data',
+			},
 		},
 		{
-			path: "/emails",
-			name: "Emails",
+			path: '/emails',
+			name: 'Emails',
 			component: Emails,
 			meta: {
-				title: "Emails"
-			}
+				title: 'Emails',
+			},
 		},
 		{
-			path: "/hooks",
-			name: "Hooks",
+			path: '/hooks',
+			name: 'Hooks',
 			component: Hooks,
 			meta: {
-				title: "Hooks"
-			}
+				title: 'Hooks',
+			},
 		},
 		{
-			path: "/models/:model?/:field?",
-			name: "Models",
+			path: '/models/:model?/:field?',
+			name: 'Models',
 			component: Models,
 			meta: {
-				title: "Models"
-			}
+				title: 'Models',
+			},
 		},
 		{
-			path: "/permissions",
-			name: "Permissions",
+			path: '/permissions',
+			name: 'Permissions',
 			component: Permissions,
 			meta: {
-				title: "Permissions"
-			}
+				title: 'Permissions',
+			},
 		},
 		{
-			path: "/responses/:template?",
-			name: "Responses",
+			path: '/responses/:template?',
+			name: 'Responses',
 			component: Responses,
 			meta: {
-				title: "Responses"
-			}
+				title: 'Responses',
+			},
 		},
 		{
-			path: "/routes",
-			name: "Routes",
+			path: '/routes',
+			name: 'Routes',
 			component: Routes,
 			meta: {
-				title: "Routes"
-			}
+				title: 'Routes',
+			},
 		},
 		{
-			path: "/views",
-			name: "Views",
+			path: '/views',
+			name: 'Views',
 			component: Views,
 			meta: {
-				title: "Views"
-			}
-		}
-	]
+				title: 'Views',
+			},
+		},
+	],
 });
 
 router.beforeEach((to, from, next) => {

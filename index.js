@@ -5,10 +5,10 @@
 
 /* Dependencies */
 
+import { fileURLToPath } from 'node:url';
 import { readFileSync as read, existsSync as exists } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
-import { fileURLToPath } from 'url';
 import yargs from 'yargs';
 /* eslint-disable-next-line node/file-extension-in-import */
 import { hideBin } from 'yargs/helpers';
@@ -37,12 +37,12 @@ const app = new App();
 
 const sirvSettings = {
 	maxAge: 1,
-	dev: process.env.NODE_ENV !== 'production'
+	dev: process.env.NODE_ENV !== 'production',
 };
 
-app.use(`/js`, sirv(path.join(__dirname, 'dist/js'), sirvSettings));
-app.use(`/css`, sirv(path.join(__dirname, 'dist/css'), sirvSettings));
-app.use(`/images`, sirv(path.join(__dirname, 'dist/images'), sirvSettings));
+app.use('/js', sirv(path.join(__dirname, 'dist/js'), sirvSettings));
+app.use('/css', sirv(path.join(__dirname, 'dist/css'), sirvSettings));
+app.use('/images', sirv(path.join(__dirname, 'dist/images'), sirvSettings));
 
 
 /* Data routes */

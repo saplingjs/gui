@@ -1,17 +1,13 @@
 import dot from 'dot-object';
 
 const state = {
-	templates: {}
+	templates: {},
 };
 
 const getters = {
-	getResponseTemplates: (state) => () => {
-		return state.templates;
-	},
+	getResponseTemplates: state => () => state.templates,
 
-	getResponseTemplateKeys: (state) => () => {
-		return Object.keys(state.templates);
-	},
+	getResponseTemplateKeys: state => () => Object.keys(state.templates),
 };
 
 const actions = {
@@ -25,11 +21,11 @@ const actions = {
 };
 
 const mutations = {
-	setResponseTemplates: (state, { templates }) => {
+	setResponseTemplates(state, { templates }) {
 		state.templates = templates;
 	},
 
-	setResponseTemplate: (state, { key, value }) => {
+	setResponseTemplate(state, { key, value }) {
 		dot.str(key, value, state.templates);
 	},
 };
@@ -38,5 +34,5 @@ export default {
 	state,
 	getters,
 	actions,
-	mutations
+	mutations,
 };

@@ -15,4 +15,4 @@ export default async function exists(file) {
 	} catch {
 		return false;
 	}
-};
+}

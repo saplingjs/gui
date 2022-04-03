@@ -8,9 +8,9 @@ import isPortReachable from 'is-port-reachable';
 
 
 export default {
-	ping: async (request, response) => {
+	async ping(request, response) {
 		const port = request.params.port || 3000;
 		const reachable = await isPortReachable(port, { host: 'localhost' });
 		response.json({ reachable });
-	}
+	},
 };

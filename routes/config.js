@@ -16,20 +16,20 @@ import { json } from 'milliparsec';
 
 
 export default {
-	read: async (request, response) => {
+	async read(request, response) {
 		try {
 			response.json(await digest.call({
 				dir: process.cwd(),
-				opts: {}
+				opts: {},
 			}));
 		} catch (error) {
 			response.status(500).send(error);
 		}
 	},
 
-	write: async (request, response) => {
+	async write(request, response) {
 		/* Parse body */
-		await json()(request, response, (err) => void err && console.log(err));
+		await json()(request, response, error => void error && console.log(error));
 
 		const configFile = path.join(process.cwd(), 'config.json');
 		try {
@@ -39,5 +39,5 @@ export default {
 			console.log(error);
 			response.status(500).send(error);
 		}
-	}
+	},
 };

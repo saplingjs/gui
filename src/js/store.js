@@ -11,7 +11,7 @@ export default new Vuex.Store({
 	modules: {
 		config,
 		models,
-		responses
+		responses,
 	},
-	strict: true
+	strict: true,
 });

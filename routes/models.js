@@ -7,21 +7,20 @@
 
 import process from 'node:process';
 
-import getConfig from '../utils/getConfig.js';
-
 import { digest } from '@sapling/sapling/core/loadModel.js';
+import getConfig from '../utils/getConfig.js';
 
 
 export default {
-	read: async (request, response) => {
+	async read(request, response) {
 		try {
 			response.json(await digest.call({
 				config: await getConfig(),
 				dir: process.cwd(),
-				opts: {}
+				opts: {},
 			}));
 		} catch (error) {
 			response.status(500).send(error);
 		}
-	}
+	},
 };

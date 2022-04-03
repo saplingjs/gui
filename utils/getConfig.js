@@ -12,9 +12,9 @@ export default async function getConfig() {
 	try {
 		return await digest.call({
 			dir: process.cwd(),
-			opts: {}
+			opts: {},
 		});
 	} catch (error) {
 		process.exit(`Error loading config: ${error}`);
 	}
-};
+}
