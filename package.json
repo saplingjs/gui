@@ -44,7 +44,7 @@
 		"@sapling/sapling": "^0.1.0"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "^7.17.0",
+		"@babel/eslint-parser": "^7.18.9",
 		"cross-env": "^7.0.3",
 		"laravel-mix": "^6.0.43",
 		"rimraf": "^3.0.2",
