@@ -38,7 +38,7 @@
 		"vue-prism-editor": "^1.3.0",
 		"vue-router": "^3.6.5",
 		"vuex": "^3.6.2",
-		"yargs": "^17.6.1"
+		"yargs": "^17.6.2"
 	},
 	"peerDependencies": {
 		"@sapling/sapling": "^0.1.0"
