@@ -23,7 +23,7 @@
 		"url": "https://www.groenroos.fi"
 	},
 	"dependencies": {
-		"@tinyhttp/app": "^2.0.25",
+		"@tinyhttp/app": "^2.0.26",
 		"axios": "^1.2.1",
 		"bulma-stylus": "^0.9.2-rc.1",
 		"directory-tree": "^3.4.0",
